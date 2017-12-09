@@ -1,4 +1,4 @@
-package com.rpramadhan.sbunittest.test;
+package com.rpramadhan.sbliquibase.test;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,12 +16,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rpramadhan.sbunittest.main.SBUnitTestMain;
-import com.rpramadhan.sbunittest.model.Book;
-import com.rpramadhan.sbunittest.model.Response;
+import com.rpramadhan.sbliquibase.main.SBLiquibaseMain;
+import com.rpramadhan.sbliquibase.model.Book;
+import com.rpramadhan.sbliquibase.model.Response;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SBUnitTestMain.class)
+@SpringBootTest(classes = SBLiquibaseMain.class)
 public class SaveBookTest {
 	
 	private MockMvc mockMvc;

@@ -1,4 +1,4 @@
-package com.rpramadhan.sbunittest.controller;
+package com.rpramadhan.sbliquibase.controller;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.rpramadhan.sbunittest.model.Book;
-import com.rpramadhan.sbunittest.model.Response;
-import com.rpramadhan.sbunittest.service.IBookService;
+import com.rpramadhan.sbliquibase.model.Book;
+import com.rpramadhan.sbliquibase.model.Response;
+import com.rpramadhan.sbliquibase.service.IBookService;
 
 @RestController
 public class BookController {

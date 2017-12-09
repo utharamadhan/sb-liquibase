@@ -1,4 +1,4 @@
-package com.rpramadhan.sbunittest.test;
+package com.rpramadhan.sbliquibase.test;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -16,13 +15,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rpramadhan.sbunittest.main.SBUnitTestMain;
-import com.rpramadhan.sbunittest.model.Book;
-import com.rpramadhan.sbunittest.model.Response;
+import com.rpramadhan.sbliquibase.main.SBLiquibaseMain;
+import com.rpramadhan.sbliquibase.model.Book;
+import com.rpramadhan.sbliquibase.model.Response;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = SBUnitTestMain.class)
-public class UpdateBookTest {
+@SpringBootTest(classes = SBLiquibaseMain.class)
+public class GetBookTest {
 	
 	private MockMvc mockMvc;
 	
@@ -37,12 +36,9 @@ public class UpdateBookTest {
 	}
 	
 	@Test
-	public void putSuccess() throws Exception {
-		Long _id = 1L;
-		String _title = "How to Stop Worrying and Start Living";
-		String _author = "Dale Carnegie";
-		Book book = Book.createInstance(_title, _author);	
-		mockMvc.perform(MockMvcRequestBuilders.put("/"+_id).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(book)))
+	public void findByIdSuccess() throws Exception {
+		Long _testId = 1L;
+		mockMvc.perform(MockMvcRequestBuilders.get("/"+_testId))
 			.andExpect(new ResultMatcher() {
 				@Override
 				public void match(MvcResult result) throws Exception {
@@ -50,20 +46,16 @@ public class UpdateBookTest {
 					Assert.assertEquals("00", response.getResponseCode());
 					Assert.assertEquals("success", response.getResponseDesc());
 					Book book = mapper.readValue(mapper.writeValueAsString(response.getResult()), Book.class);
-					Assert.assertNotNull(book.getId());
-					Assert.assertEquals(_title, book.getTitle());
-					Assert.assertEquals(_author, book.getAuthor());
+					Assert.assertEquals("How To Win Friends And Influence People", book.getTitle());
+					Assert.assertEquals("Dale Carnegie", book.getAuthor());
 				}
 			});
 	}
 	
 	@Test
-	public void putFailure() throws Exception {
-		Long _id = 10L;
-		String _title = "How to Stop Worrying and Start Living";
-		String _author = "Dale Carnegie";
-		Book book = Book.createInstance(_title, _author);
-		mockMvc.perform(MockMvcRequestBuilders.put("/"+_id).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsString(book)))
+	public void findByIdNotFound() throws Exception {
+		Long _testId = 10L;
+		mockMvc.perform(MockMvcRequestBuilders.get("/"+_testId))
 			.andExpect(new ResultMatcher() {
 				@Override
 				public void match(MvcResult result) throws Exception {
@@ -73,5 +65,5 @@ public class UpdateBookTest {
 				}
 			});
 	}
-
+	
 }

@@ -1,10 +1,10 @@
-package com.rpramadhan.sbunittest.service;
+package com.rpramadhan.sbliquibase.service;
 
 import java.util.TreeMap;
 
 import org.springframework.stereotype.Component;
 
-import com.rpramadhan.sbunittest.model.Book;
+import com.rpramadhan.sbliquibase.model.Book;
 
 @Component
 public class BookService implements IBookService {

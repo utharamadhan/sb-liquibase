@@ -1,4 +1,4 @@
-package com.rpramadhan.sbunittest.model;
+package com.rpramadhan.sbliquibase.model;
 
 import java.io.Serializable;
 

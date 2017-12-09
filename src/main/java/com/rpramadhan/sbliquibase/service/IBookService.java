@@ -1,6 +1,6 @@
-package com.rpramadhan.sbunittest.service;
+package com.rpramadhan.sbliquibase.service;
 
-import com.rpramadhan.sbunittest.model.Book;
+import com.rpramadhan.sbliquibase.model.Book;
 
 public interface IBookService {
 	
